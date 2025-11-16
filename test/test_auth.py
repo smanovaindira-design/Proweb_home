@@ -33,8 +33,8 @@ def test_auth (driver):
     time.sleep(5)
     comment_page.input_comment("Hello")
     time.sleep(5)
-    # comment_page.click_btn_send()
-    # time.sleep(5)
+    comment_page.click_btn_send()
+    time.sleep(5)
 
 
 #     auth_page.click_btn_profile()
