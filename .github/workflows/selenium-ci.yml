@@ -20,10 +20,24 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
 
-        - name: Run Tests
-          env:
-            DISPLAY: 99
+        - name: Install browsers
           run: |
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser chromium-chromedriver
+            sudo apt-get install -y firefox
             sudo apt-get install -y xvfb
-            Xvfb: 99 & pytest test/
+
+        
+        - name: Start Xvfb
+          run: |
+            Xvfb :99 -screen 0 1920x1080x24 &
+          env:
+            DISPLAY: ":99"
+
+        - name: Run tests
+          run: |
+            pytest -s
+          env:
+            DISPLAY: ":99"
+        
             
